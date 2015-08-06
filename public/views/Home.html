@@ -1,3 +1,26 @@
 <div ng-controller="HomeController as vm">
-	<h1>{{vm.title}}</h1>
+
+	<div class="loginImage">
+		<div class="header">
+			<h1>MyBlog</h1>
+		</div>
+
+		<div class="loginForm">
+			<form ng-submit="vm.login()" novalidate>
+				<div class="form-group userinput">
+					<input class="form-control" placeholder="username.." ng-model="vm.user.username" required >
+				</div>
+
+				<div class="form-group userinput">
+					<input class="form-control" type="password" placeholder="password.." ng-model="vm.user.password" required >
+				</div>
+				<div class="row loginbtn">
+					<button type="submit" class="btn btn-success">Log in</button>
+				</div>
+			</form>
+		</div>
+		<div class="register">
+			<a ui-sref="Register">New Account</a>
+		</div>
+	</div> 
 </div>
