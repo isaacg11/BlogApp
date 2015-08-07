@@ -1,4 +1,6 @@
 	<div ng-controller="navBarController as nav" class="profileImage">
+		<!--................................................................HEADER..............................................................................-->
+
 		<nav id="profilenavbar" class="navbar navbar-default">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -25,4 +27,26 @@
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
+		<!--................................................................BLOG BOX..................................................................................-->
+		<h3 id="myblogs" align="center"><u>My Blogs</u></h3>
+		<div class="flex-container">
+			<div ng-repeat="b in nav.blogS | orderBy: '-dateCreated' "  class="task-col"> <!--this line says that it will loop through all the properties in vm.blogS-->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<span class="panel-title"></span>
+					</div>
+					<div id="blogbody" class="panel panel-body">
+						<br />
+						<p id="description" class="hcenter pcontent">{{b.description}}</p>
+						<br />
+						<br />
+						<br />
+						<br />
+						<div id="timedate" class="active" id="date"><i>created: </i>{{b.dateCreated | date: "short"}}</div>
+					</div>
+					<div class="panel-footer hcenter">
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
