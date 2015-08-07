@@ -91,4 +91,19 @@
 .headerpublic{
 	text-align: center;
 }
+#addBlogImage{
+	background-image: url("http://4.bp.blogspot.com/-waMwSpXa0Z8/TiuCvDXEk0I/AAAAAAAACUQ/D-iLtRHgbfY/s1600/shutterstock_3210555.jpg");
+	background-position-x:50%;
+	background-position-y:50%;
+	background-size: cover;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top:0;
+	z-index: -9;
+}
+#backtoprofile{
+	float:right;
+	color:#FFFFFF;
 }
