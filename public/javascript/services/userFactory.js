@@ -17,7 +17,7 @@
 		o.removeToken = removeToken;
 		o.register = register;
 		o.login = login;
-		// o.logout = logout;
+		o.logout = logout;
 		return o;
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		function register(user) {
@@ -43,10 +43,11 @@
 			return q.promise;
 		}
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-		// function logout() {
-		// 	o.status.isLoggedIn = false;
-		// 	removeToken();
-		// }
+		function logout() {
+			console.log("reached the factory");
+			o.status.isLoggedIn = false;
+			removeToken();
+		}
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		function setToken(token){
 			localStorage.setItem('token', token);

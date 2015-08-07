@@ -1,4 +1,4 @@
-	<div class="profileImage">
+	<div ng-controller="navBarController as nav" class="profileImage">
 		<nav id="profilenavbar" class="navbar navbar-default">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -17,10 +17,10 @@
 						<li><h2>MyBlog_Profile</h2></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li ng-show="!nav.status.isLoggedIn"><a ui-sref="Public">| Public Blogs |</a></li>
-						<li ng-show="!nav.status.isLoggedIn"><a ui-sref="Add">| New Blog |</a></li>
-						<li ng-show="!nav.status.isLoggedIn"><a ui-sref="Home">| Logout |</a></li>
-						<li ng-show="nav.status.username"><a>{{nav.status.username}}</a></li>
+						<li><a ui-sref="Public">| Public Blogs |</a></li>
+						<li><a ui-sref="Add">| New Blog |</a></li>
+						<li><a ui-sref="Home" ng-click="nav.logout()">| Logout |</a></li>
+						<li id="welcome"><a>Hi, {{nav.status.username}}</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->

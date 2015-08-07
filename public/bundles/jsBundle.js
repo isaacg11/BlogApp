@@ -70,7 +70,7 @@ $urlRouterProvider.otherwise('/');
 		vm.user = {};
 		vm.status = userFactory.status;
 		vm.login = login;
-		// vm.logout = userFactory.logout;
+		vm.logout = userFactory.logout;
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 function login() {
 	userFactory.login(vm.user).then(function(){
@@ -78,6 +78,8 @@ function login() {
 	});
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+
 
 }
 })();
@@ -141,7 +143,7 @@ function register() {
 		o.removeToken = removeToken;
 		o.register = register;
 		o.login = login;
-		// o.logout = logout;
+		o.logout = logout;
 		return o;
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		function register(user) {
@@ -167,10 +169,11 @@ function register() {
 			return q.promise;
 		}
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-		// function logout() {
-		// 	o.status.isLoggedIn = false;
-		// 	removeToken();
-		// }
+		function logout() {
+			console.log("reached the factory");
+			o.status.isLoggedIn = false;
+			removeToken();
+		}
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		function setToken(token){
 			localStorage.setItem('token', token);
