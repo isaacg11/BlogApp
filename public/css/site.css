@@ -107,3 +107,22 @@
 	float:right;
 	color:#FFFFFF;
 }
+#editBlogImage{
+	background-image: url("http://static.simpledesktops.com/uploads/desktops/2011/11/05/Notebook.png");
+	background-position-x:50%;
+	background-position-y:50%;
+	background-size: cover;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top:0;
+	z-index: -9;
+}
+#backtoprofile2{
+	float:right;
+	color:blue;
+}
+.headeredit{
+	text-align: center;
+}
