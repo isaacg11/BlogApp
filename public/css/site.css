@@ -45,7 +45,7 @@
 	text-align: center;
 }
 .registerImage{
-	background-image: url("http://cdn.desktopwallpaper4.me/wallpapers/abstract/1920x1080/1/1416-yellow-and-orange-gradient-1920x1080-abstract-wallpaper.jpg");
+	background-image: url("http://freeios7.com/download/freeios7.com_apple_wallpaper_htc-one-orange-abstract_ipad_retina_parallax.jpg");
 	background-position-x:50%;
 	background-position-y:50%;
 	background-size: cover;
@@ -68,7 +68,27 @@
 	top:0;
 	z-index: -9;
 }
+.publicImage{
+	background-image: url("http://lecoindefranie.l.e.pic.centerblog.net/xil7fqo4.jpg");
+	background-position-x:50%;
+	background-position-y:50%;
+	background-size: cover;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top:0;
+	z-index: -9;
+}
 #profilenavbar{
-	background-color: #FFD633;
+	background-color:rgba(255,95,0,.7);
 	border:solid 1px;
+}
+#publicnavbar{
+	background-color:rgba(255,255,0,.5);
+	border:solid 1px;
+}
+.headerpublic{
+	text-align: center;
+}
 }
