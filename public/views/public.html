@@ -1,4 +1,6 @@
-<div class="publicImage">
+<div ng-controller="HomeController as vm" class="publicImage">
+	<!--................................................................HEADER...........................................................................................f-->
+
 	<nav id="publicnavbar" class="navbar navbar-default">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -22,4 +24,26 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
+	<!--................................................................BLOG BOX.....................................................................................-->
+	<div class="flex-container">
+		<div ng-repeat="b in vm.blogS"  class="task-col"> <!--this line says that it will loop through all the properties in vm.comments-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span class="panel-title"></span>
+				</div>
+				<div id="blogbody" class="panel panel-body">
+					<br />
+					<p id="description" class="hcenter pcontent">{{b.description}}</p>
+					<br />
+					<br />
+					<br />
+					<br />
+					<div id="timedate" class="active" id="date"><i>created: </i>{{b.dateCreated | date: "short"}}</div>
+				</div>
+				<div class="panel-footer hcenter">
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>

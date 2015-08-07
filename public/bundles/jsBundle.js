@@ -50,14 +50,38 @@ $urlRouterProvider.otherwise('/');
 	angular.module('app')
 	.controller('HomeController', HomeController);
 
-	HomeController.$inject = [];
+	HomeController.$inject = ['HomeFactory'];
 
-	function HomeController() {
+	function HomeController(HomeFactory) {
 		var vm = this;
-		vm.title = 'Welcome to our App!';
+		vm.blogS = []; //this line declares a variable which will be equal to the array holding the data obj. 
+		// vm.deleteComment = HomeFactory.deleteComment; //this line declares a variable which will be equal to the 'deleteComment()' function in the HF.
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+		HomeFactory.getBlogs().then(function(blog){
+			vm.blogS = blog;
+		});
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	}
 })();
+(function() {
+	'use strict';
+	angular.module('app')
+	.controller('addBlogController', addBlogController);
 
+	addBlogController.$inject = ['HomeFactory','$state'];
+
+	function addBlogController(HomeFactory,$state) {
+		var vm = this; 
+		var blog = {}; 
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+		vm.addBlog = function() { //this line is a function that takes input from the createComment.html page through 'vm' databinding.
+			HomeFactory.postBlog(vm.blog).then(function(){ //this line says to activate 'postComment()'' func. in the HF and pass the data in the 'comment' obj.
+				$state.go('Public'); // line says that once the 'postComment()' is done to go to the 'Home' state in app.js.
+			});
+		};
+	}
+})();
 (function() {
 	'use strict';
 	angular.module('app')
@@ -111,6 +135,7 @@ function register() {
 
 }
 })();
+
 (function() {
 	'use strict';
 	angular.module('app')
@@ -119,9 +144,40 @@ function register() {
 	HomeFactory.$inject = ['$http', '$q'];
 
 	function HomeFactory($http, $q) {
-		var o = {};
-		
-		return o;
+		var o = {}; // this is an empty object that will take all the functions and put them in the obj. "o" 
+		o.blogS = []; //this is an empty array
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+		o.postBlog = function(blog){ //this line is a function that uses the data passed from the createCommentController and puts it in the parameter.
+			var q = $q.defer(); //this line creates a variable called 'q' which holds $q.defer().
+			$http.post('/the/apiCall/Blog', blog).success(function(res){ //this line says if the post request is successful TO THE SERVER to run the func., but not error().
+				blog._id = res.id; //this line will give the comment data an id as a response to the CLIENT SIDE.
+				blog.dateCreated = new Date(); //this line takes the data, assigns it a property of dateCreated, and uses the new Date() method to insert the current date. (CLIENT SIDE)
+				o.blogS.push(blog); //this line pushes the data from 'comment' and puts in the empty array 'comments' that can be used on the CLIENT SIDE.
+				q.resolve(); // this line says to go back to the cCController and activate the first property '.then'.
+			}).error(function(res){ //this line says that if there is an error to run the function.
+				q.reject(res); //this line says to run the 2nd property in the cCController (usually an error notification)
+			});
+			return q.promise; //this line turns the function call in the cCController into an object and to activate when the q.whatever method is used.
+		};
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+o.getBlogs = function(){ 
+	var q = $q.defer();
+			$http.get('/the/apiCall/Blog').success(function(res){ //this line sends a get request to '/the/apiCall/Comment'. 
+				q.resolve(res);
+			});
+			return q.promise; //this line turns the function call in the cCController into an object and to activate when the q.whatever method is used.
+		};
+// //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+// o.deleteComment = function(comment){ 
+// 			$http.post('/the/apiCall/deleteComment/' + comment._id).success(function(res){ //this line sends a post request to '/the/apiCall/deleteComment/'+commentID to SERVER SIDE.
+// 				o.comments.splice(o.comments.indexOf(comment), 1);//this line takes the comments array obj. and splices the array obj. at the index of 'comment', 1 (CLIENT SIDE)
+// 			}); 
+// 		};
+// //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+		return o; //this line says to take all the functions in the obj 'o' and then inject them into the HF for use in the controllers.
 	}
 })();
 (function() {

@@ -1,3 +1,14 @@
-<div id="addBlogImage">
+<div ng-controller="addBlogController as vm" id="addBlogImage">
+
 	<a id="backtoprofile" ui-sref="Profile">Profile > </a>
+	<form id="addblogbox" ng-submit="vm.addBlog()" class="well container">
+		<div class="form-input">
+			<label>Write your blog here!</label>
+			<textarea class="form-control" ng-model="vm.blog.description" rows="20"></textarea>
+		</div>
+		<br>
+		<div align="center" class="hcenter">
+			<button class="btn btn-lg btn-default" type="submit">Post Blog</button> 
+		</div>
+	</form>
 </div>

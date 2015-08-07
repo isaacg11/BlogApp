@@ -3,10 +3,16 @@
 	angular.module('app')
 	.controller('HomeController', HomeController);
 
-	HomeController.$inject = [];
+	HomeController.$inject = ['HomeFactory'];
 
-	function HomeController() {
+	function HomeController(HomeFactory) {
 		var vm = this;
-		vm.title = 'Welcome to our App!';
+		vm.blogS = []; //this line declares a variable which will be equal to the array holding the data obj. 
+		// vm.deleteComment = HomeFactory.deleteComment; //this line declares a variable which will be equal to the 'deleteComment()' function in the HF.
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+		HomeFactory.getBlogs().then(function(blog){
+			vm.blogS = blog;
+		});
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	}
 })();
