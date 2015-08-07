@@ -56,3 +56,19 @@
 	top:0;
 	z-index: -9;
 }
+.profileImage{
+	background-image: url("http://c.shld.net/rpx/i/s/i/spin/10053567/prod_1406879712");
+	background-position-x:50%;
+	background-position-y:50%;
+	background-size: cover;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top:0;
+	z-index: -9;
+}
+#profilenavbar{
+	background-color: #FFD633;
+	border:solid 1px;
+}
