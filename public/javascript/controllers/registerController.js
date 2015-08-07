@@ -18,7 +18,6 @@ function register() {
 		return false; //true, then to return false to THE CLIENT.
 	}
 	userFactory.register(u).then(function(){ //this line says to go to the HF and activate the function 'register' by passing the data obj.'user' in the parameter.
-		console.log("registration successful");
 		$state.go('Profile');//this line says that once the function is complete, go back and render the 'Profile' state.
 	});
 }

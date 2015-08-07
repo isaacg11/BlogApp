@@ -18,18 +18,18 @@ router.post("/Register", function(req, res, next){ //this line activates the fun
 
 });
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-// router.post('/Login', function(req, res, next) {
-// 	console.log("reaching the route");
-// 	if(!req.body.username || !req.body.password) return res.status(400).send("Please fill out every field");
-// 	passport.authenticate('local', function(err, user, info) {
-// 		if(err) return next(err);
-// 		if(user) return res.json({token : user.generateJWT()});
-// 		return res.status(400).send(info);
-// 	})(req, res, next);
-// });
+router.post('/Login', function(req, res, next) {
+	console.log("reaching the route");
+	if(!req.body.username || !req.body.password) return res.status(400).send("Please fill out every field");
+	passport.authenticate('local', function(err, user, info) {
+		if(err) return next(err);
+		if(user) return res.json({token : user.generateJWT()});
+		return res.status(400).send(info);
+	})(req, res, next);
+});
 
-// router.use(function(err, req, res, next) {
-// 	res.status(500).send(err);
-// });
+router.use(function(err, req, res, next) {
+	res.status(500).send(err);
+});
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 module.exports = router;

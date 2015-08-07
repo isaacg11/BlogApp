@@ -9,7 +9,7 @@ var passport = require('passport'); //this line is importing passport.
 //MODELS AND STRATEGIES
 require('./models/Users');
 // require('./models/Photos');
-// require('./config/passport');
+require('./config/passport');
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //DATABASE CONNECTION
 mongoose.connect('mongodb://localhost/blog');
