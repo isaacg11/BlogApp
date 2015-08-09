@@ -1,14 +1,33 @@
 <div ng-controller="addBlogController as vm" id="addBlogImage">
-
 	<a id="backtoprofile" ui-sref="Profile">Profile > </a>
 	<form id="addblogbox" ng-submit="vm.addBlog()" class="well container">
 		<div class="form-input">
-			<label>Write your blog here!</label>
 			<textarea class="form-control" ng-model="vm.blog.description" rows="20"></textarea>
 		</div>
 		<br>
 		<div align="center" class="hcenter">
-			<button class="btn btn-lg btn-default" type="submit">Post Blog</button> 
+			<button class="btn btn-info" type="submit">Publish Blog</button> 
 		</div>
 	</form>
+	<div class="chat">
+		<div id="textbubble1"class="bubble me"><u><span id="social">Social</span></u>
+			<br />
+			<a target="_blank" href="https://facebook.com/"><img src="http://pizzainmotion.img.boardingarea.com/wp-content/uploads/2014/11/facebook-icon-50x50.jpg"/></a>
+			<span>
+				<a target="_blank" href="https://twitter.com/"><img src="http://cdn2.blocksassets.com/assets/aopen/aopen/v6eLGoU8zSEnWrA/web.Twitter-50x50.png"></a>
+			</span>
+			<span>
+				<a target="_blank" href="http://instagram.com/"><img src="http://www.northeastern.edu/cos/wp-content/uploads/2014/05/Instagram-50x50.jpg"></a>
+			</span>
+			<span>
+				<a target="_blank" href="https://www.pinterest.com/"><img src="http://www.geneseo.edu/sites/default/files/images/PinterestLogo.img_assist_custom-50x50.png"></a>
+			</span>
+			<span>
+				<a target="_blank" href="https://www.tumblr.com/"><img src="http://static1.squarespace.com/static/5116d7aae4b085e20f7e3d3a/t/54518887e4b0d6fb473277d5/1414629511515/Tumblr+50x50.jpg"></a>
+			</span>
+		</div>
+		<div id="textbubble2" class="bubble you"><b>Write your blog here!</b></div>
+		<div id="textbubble3" class="bubble me"><u><span id="writertools">Writer Tools</span></u></div>
+		<div id="textbubble4" class="bubble me"><u><span id="trendingnow">Trending Now</span></u></div>
+	</div>
 </div>

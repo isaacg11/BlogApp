@@ -193,7 +193,7 @@ o.getBlogs = function(){
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //DELETE POST CALL
 o.deleteBlog = function(blog){ 
-	console.log("reached the factory");
+	alert("Are you sure you want to remove this blog?");
 	var q = $q.defer();
 	$http.post('/the/apiCall/deleteBlog/' + blog._id).success(function(res){ 
 		o.blogS.splice(o.blogS.indexOf(blog), 1);
