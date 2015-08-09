@@ -86,7 +86,7 @@
 		border:solid 1px;
 	}
 	#publicnavbar{
-		background-color:rgba(255,255,0,.5);
+		background-color:rgba(255, 255, 102,.5);
 		border:solid 1px;
 		width:100%;
 		text-align: center;
@@ -160,7 +160,7 @@
 		font-size: 10px;
 	}
 	#blogbody{
-		background-color: rgba(255, 255, 102,.5)
+		background-color: rgba(255, 255, 102,.5);
 	}
 	.headerpublic{
 		margin-top: -10px;
@@ -185,4 +185,10 @@
 	}
 	#remove{
 		cursor: pointer;
+	}
+	#author{
+		font-size: 10px;
+	}
+	#footer{
+		background-color: #999999;
 	}

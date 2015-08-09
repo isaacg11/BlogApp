@@ -5,7 +5,7 @@
 
 	navBarController.$inject = ['userFactory', 'HomeFactory','$state','$window'];
 
-	function navBarController(userFactory, HomeFactory, $state, $window) {
+	function navBarController(userFactory, HomeFactory, $state) {
 		var vm = this;
 		vm.user = {};
 		vm.status = userFactory.status;
@@ -25,15 +25,9 @@ function login() {
 // 	vm.blogS = blog;
 // });
 
-//---------------------------------------------------------------------PROFILE>GET ALL BLOGS--------------------------------------------------------------------------//
-// HomeFactory.getBlogs().then(function(data){
-// 	vm.blogS = data;
-// });
 //------------------------------------------------------------------------PROFILE>DELETE-----------------------------------------------------------------------------//
 function deleteBlog(b) {
-	console.log('reached the controller');
 	HomeFactory.deleteBlog(b).then(function(){
-		$state.go('Profile');
 		HomeFactory.getBlogs();
 	});
 }

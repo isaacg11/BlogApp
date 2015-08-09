@@ -15,7 +15,9 @@ var blogSchema = new mongoose.Schema({ //this function says that when data is se
 		body:String,
 		user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
 		dateCreated: Date
-	}]
+	}],
+	user: String
+	
 });
 
 mongoose.model('blogModel', blogSchema); //this line says that the model will be referenced by the name of 'Comment', and to use CommentSchema for the data.

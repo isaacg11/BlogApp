@@ -56,11 +56,6 @@ $urlRouterProvider.otherwise('/');
 		var vm = this;
 		vm.blogS = HomeFactory.blogS; //this line declares a variable which will be equal to the array holding the data obj. 
 		// vm.deleteComment = HomeFactory.deleteComment; //this line declares a variable which will be equal to the 'deleteComment()' function in the HF.
-
-		//-------------------------------------------------------------------PUBLIC>GET ALL BLOGS-----------------------------------------------------------------------------------------//
-		// HomeFactory.getBlogs().then(function(blog){
-		// 	vm.blogS = blog;
-		// });
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	}
 })();
@@ -69,16 +64,18 @@ $urlRouterProvider.otherwise('/');
 	angular.module('app')
 	.controller('addBlogController', addBlogController);
 
-	addBlogController.$inject = ['HomeFactory','$state'];
+	addBlogController.$inject = ['HomeFactory','userFactory','$state'];
 
-	function addBlogController(HomeFactory,$state) {
+	function addBlogController(HomeFactory, userFactory, $state) {
 		var vm = this; 
 		var blog = {}; 
+		vm.status = userFactory.status;
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
-		vm.addBlog = function() { //this line is a function that takes input from the createComment.html page through 'vm' databinding.
+vm.addBlog = function() {
+			vm.blog.user = vm.status.username;				 //this line is a function that takes input from the createComment.html page through 'vm' databinding.
 			HomeFactory.postBlog(vm.blog).then(function(){ //this line says to activate 'postComment()'' func. in the HF and pass the data in the 'comment' obj.
-				$state.go('Public'); // line says that once the 'postComment()' is done to go to the 'Home' state in app.js.
+				$state.go('Profile'); // line says that once the 'postComment()' is done to go to the 'Home' state in app.js.
 			});
 		};
 	}
@@ -90,7 +87,7 @@ $urlRouterProvider.otherwise('/');
 
 	navBarController.$inject = ['userFactory', 'HomeFactory','$state','$window'];
 
-	function navBarController(userFactory, HomeFactory, $state, $window) {
+	function navBarController(userFactory, HomeFactory, $state) {
 		var vm = this;
 		vm.user = {};
 		vm.status = userFactory.status;
@@ -110,15 +107,9 @@ function login() {
 // 	vm.blogS = blog;
 // });
 
-//---------------------------------------------------------------------PROFILE>GET ALL BLOGS--------------------------------------------------------------------------//
-// HomeFactory.getBlogs().then(function(data){
-// 	vm.blogS = data;
-// });
 //------------------------------------------------------------------------PROFILE>DELETE-----------------------------------------------------------------------------//
 function deleteBlog(b) {
-	console.log('reached the controller');
 	HomeFactory.deleteBlog(b).then(function(){
-		$state.go('Profile');
 		HomeFactory.getBlogs();
 	});
 }

@@ -39,9 +39,10 @@
 					<br />
 					<br />
 					<br />
-					<div id="timedate" class="active" id="date"><i>created: </i>{{b.dateCreated | date: "short"}}</div>
+					<div id="author" class="active" id="author"><i>blogged_by: </i>{{b.user}} @ {{b.dateCreated | date: "short"}}</div>
+					<!-- <div id="timedate" class="active" id="date"><i>created: </i>{{b.dateCreated | date: "short"}}</div> -->
 				</div>
-				<div class="panel-footer hcenter">
+				<div id="footer" class="panel-footer hcenter">
 					<button class="btn btn-info btn-sm" ng-click="someEvent()">Comment</button>
 				</div>
 			</div>
