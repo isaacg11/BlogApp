@@ -7,12 +7,13 @@
 
 	function HomeController(HomeFactory) {
 		var vm = this;
-		vm.blogS = []; //this line declares a variable which will be equal to the array holding the data obj. 
+		vm.blogS = HomeFactory.blogS; //this line declares a variable which will be equal to the array holding the data obj. 
 		// vm.deleteComment = HomeFactory.deleteComment; //this line declares a variable which will be equal to the 'deleteComment()' function in the HF.
-		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-		HomeFactory.getBlogs().then(function(blog){
-			vm.blogS = blog;
-		});
+
+		//-------------------------------------------------------------------PUBLIC>GET ALL BLOGS-----------------------------------------------------------------------------------------//
+		// HomeFactory.getBlogs().then(function(blog){
+		// 	vm.blogS = blog;
+		// });
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	}
 })();

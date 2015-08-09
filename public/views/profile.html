@@ -1,5 +1,5 @@
 	<div ng-controller="navBarController as nav" class="profileImage">
-		<!--................................................................HEADER..............................................................................-->
+		<!--................................................................NAVBAR..............................................................................-->
 
 		<nav id="profilenavbar" class="navbar navbar-default">
 			<div class="container-fluid">
@@ -30,7 +30,7 @@
 		<!--................................................................BLOG BOX..................................................................................-->
 		<h3 id="myblogs" align="center"><u>My Blogs</u></h3>
 		<div class="flex-container">
-			<div ng-repeat="b in nav.blogS | orderBy: '-dateCreated' "  class="task-col"> <!--this line says that it will loop through all the properties in vm.blogS-->
+			<div ng-repeat="b in nav.blogS | orderBy: '-dateCreated'"  class="task-col"> <!--this line says that it will loop through all the properties in vm.blogS-->
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<span class="panel-title"></span>
@@ -45,6 +45,8 @@
 						<div id="timedate" class="active" id="date"><i>created: </i>{{b.dateCreated | date: "short"}}</div>
 					</div>
 					<div class="panel-footer hcenter">
+						<a id="remove" ng-click="nav.deleteBlog(b);">| Remove Blog |</a>
+						<span><button ui-sref="Edit" class="btn btn-warning btn-sm">Edit Blog</button></span>
 					</div>
 				</div>
 			</div>

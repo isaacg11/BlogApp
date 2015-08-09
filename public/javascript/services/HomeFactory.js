@@ -32,13 +32,27 @@ o.getBlogs = function(){
 			});
 			return q.promise; //this line turns the function call in the cCController into an object and to activate when the q.whatever method is used.
 		};
-// //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-
-// o.deleteComment = function(comment){ 
-// 			$http.post('/the/apiCall/deleteComment/' + comment._id).success(function(res){ //this line sends a post request to '/the/apiCall/deleteComment/'+commentID to SERVER SIDE.
-// 				o.comments.splice(o.comments.indexOf(comment), 1);//this line takes the comments array obj. and splices the array obj. at the index of 'comment', 1 (CLIENT SIDE)
-// 			}); 
-// 		};
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+// o.getBlogsUser = function(userId, blog) {
+// 	var q = $q.defer();
+// 	$http.get('/the/apiCall/BlogUser/' + userId + '/blog', blog, {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}}).success(function(res) {
+// 		blog.user = {};
+// 		blog.user.username = JSON.parse(atob(localStorage['token'].split('.')[1])).username;
+// 		q.resolve(res);
+// 	});
+// 	return q.promise;
+// };
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//DELETE POST CALL
+o.deleteBlog = function(blog){ 
+	console.log("reached the factory");
+	var q = $q.defer();
+	$http.post('/the/apiCall/deleteBlog/' + blog._id).success(function(res){ 
+		o.blogS.splice(o.blogS.indexOf(blog), 1);
+		q.resolve();
+	});
+	return q.promise; 
+};
 // //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		return o; //this line says to take all the functions in the obj 'o' and then inject them into the HF for use in the controllers.
 	}

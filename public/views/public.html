@@ -16,10 +16,11 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="headerpublic"><h2>MyBlog_Wall</h2></li>
+					<li class="headerpublic"><h2 id="headerbodypublic">Blog_Wall</h2></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a ui-sref="Profile"> Profile ></a></li>
+					<li><a ui-sref="Add">| +New Blog |</a></li>
+					<li><a id="backtoprofile3" ui-sref="Profile"> Profile ></a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
@@ -41,9 +42,9 @@
 					<div id="timedate" class="active" id="date"><i>created: </i>{{b.dateCreated | date: "short"}}</div>
 				</div>
 				<div class="panel-footer hcenter">
+					<button class="btn btn-info btn-sm" ng-click="someEvent()">Comment</button>
 				</div>
 			</div>
 		</div>
 	</div>
-
 </div>

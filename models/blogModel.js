@@ -6,10 +6,10 @@ var blogSchema = new mongoose.Schema({ //this function says that when data is se
 		type: String,
 		required:true
 	},
-	// dateDeleted: {
-	// 	type: Date,
-	// 	default: null
-	// },
+	dateDeleted: {
+		type: Date,
+		default: null
+	},
 	dateCreated: Date,
 	blogS:[{
 		body:String,

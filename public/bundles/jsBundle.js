@@ -54,12 +54,13 @@ $urlRouterProvider.otherwise('/');
 
 	function HomeController(HomeFactory) {
 		var vm = this;
-		vm.blogS = []; //this line declares a variable which will be equal to the array holding the data obj. 
+		vm.blogS = HomeFactory.blogS; //this line declares a variable which will be equal to the array holding the data obj. 
 		// vm.deleteComment = HomeFactory.deleteComment; //this line declares a variable which will be equal to the 'deleteComment()' function in the HF.
-		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-		HomeFactory.getBlogs().then(function(blog){
-			vm.blogS = blog;
-		});
+
+		//-------------------------------------------------------------------PUBLIC>GET ALL BLOGS-----------------------------------------------------------------------------------------//
+		// HomeFactory.getBlogs().then(function(blog){
+		// 	vm.blogS = blog;
+		// });
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	}
 })();
@@ -87,26 +88,43 @@ $urlRouterProvider.otherwise('/');
 	angular.module('app')
 	.controller('navBarController', navBarController);
 
-	navBarController.$inject = ['userFactory', 'HomeFactory','$state'];
+	navBarController.$inject = ['userFactory', 'HomeFactory','$state','$window'];
 
-	function navBarController(userFactory, HomeFactory, $state) {
+	function navBarController(userFactory, HomeFactory, $state, $window) {
 		var vm = this;
 		vm.user = {};
 		vm.status = userFactory.status;
 		vm.login = login;
+		vm.deleteBlog = deleteBlog;
 		vm.logout = userFactory.logout;
-		vm.blogS = [];
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+		// vm.deleteBlog = HomeFactory.deleteBlog;
+		vm.blogS = HomeFactory.blogS;
+//---------------------------------------------------------------------------LOGIN---------------------------------------------------------------------------------//
 function login() {
 	userFactory.login(vm.user).then(function(){
 		$state.go('Profile');
 	});
 }
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-HomeFactory.getBlogs().then(function(blog){
-	vm.blogS = blog;
-});
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//-------------------------------------------------------------------PROFILE>GET BLOGS BY USER ID-------------------------------------------------------------------------//
+// HomeFactory.getBlogsUser().then(function(blog){
+// 	vm.blogS = blog;
+// });
+
+//---------------------------------------------------------------------PROFILE>GET ALL BLOGS--------------------------------------------------------------------------//
+// HomeFactory.getBlogs().then(function(data){
+// 	vm.blogS = data;
+// });
+//------------------------------------------------------------------------PROFILE>DELETE-----------------------------------------------------------------------------//
+function deleteBlog(b) {
+	console.log('reached the controller');
+	HomeFactory.deleteBlog(b).then(function(){
+		$state.go('Profile');
+		HomeFactory.getBlogs();
+	});
+}
+
+
+
 }
 })();
 
@@ -171,13 +189,27 @@ o.getBlogs = function(){
 			});
 			return q.promise; //this line turns the function call in the cCController into an object and to activate when the q.whatever method is used.
 		};
-// //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-
-// o.deleteComment = function(comment){ 
-// 			$http.post('/the/apiCall/deleteComment/' + comment._id).success(function(res){ //this line sends a post request to '/the/apiCall/deleteComment/'+commentID to SERVER SIDE.
-// 				o.comments.splice(o.comments.indexOf(comment), 1);//this line takes the comments array obj. and splices the array obj. at the index of 'comment', 1 (CLIENT SIDE)
-// 			}); 
-// 		};
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+// o.getBlogsUser = function(userId, blog) {
+// 	var q = $q.defer();
+// 	$http.get('/the/apiCall/BlogUser/' + userId + '/blog', blog, {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}}).success(function(res) {
+// 		blog.user = {};
+// 		blog.user.username = JSON.parse(atob(localStorage['token'].split('.')[1])).username;
+// 		q.resolve(res);
+// 	});
+// 	return q.promise;
+// };
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//DELETE POST CALL
+o.deleteBlog = function(blog){ 
+	console.log("reached the factory");
+	var q = $q.defer();
+	$http.post('/the/apiCall/deleteBlog/' + blog._id).success(function(res){ 
+		o.blogS.splice(o.blogS.indexOf(blog), 1);
+		q.resolve();
+	});
+	return q.promise; 
+};
 // //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		return o; //this line says to take all the functions in the obj 'o' and then inject them into the HF for use in the controllers.
 	}
@@ -228,7 +260,6 @@ o.getBlogs = function(){
 		}
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		function logout() {
-			console.log("reached the factory");
 			o.status.isLoggedIn = false;
 			removeToken();
 		}
