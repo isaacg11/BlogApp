@@ -1,4 +1,5 @@
 <div ng-controller="addBlogController as vm" id="addBlogImage">
+	<!--........................................................................ADDBLOG BOX..................................................................-->
 	<a id="backtoprofile" ui-sref="Profile">Profile > </a>
 	<form id="addblogbox" ng-submit="vm.addBlog()" class="well container">
 		<div class="form-input">
@@ -10,6 +11,7 @@
 		</div>
 	</form>
 	<div class="chat">
+		<!--................................................................SPEECHBUBBLE SOCIAL..................................................................-->
 		<div id="textbubble1"class="bubble me"><u><span id="social">Social</span></u>
 			<br />
 			<a target="_blank" href="https://facebook.com/"><img src="http://pizzainmotion.img.boardingarea.com/wp-content/uploads/2014/11/facebook-icon-50x50.jpg"/></a>
@@ -26,8 +28,27 @@
 				<a target="_blank" href="https://www.tumblr.com/"><img src="http://static1.squarespace.com/static/5116d7aae4b085e20f7e3d3a/t/54518887e4b0d6fb473277d5/1414629511515/Tumblr+50x50.jpg"></a>
 			</span>
 		</div>
+		<!--............................................................SPEECHBUBBLE WRITE BLOG HERE..................................................................-->
 		<div id="textbubble2" class="bubble you"><b>Write your blog here!</b></div>
-		<div id="textbubble3" class="bubble me"><u><span id="writertools">Writer Tools</span></u></div>
-		<div id="textbubble4" class="bubble me"><u><span id="trendingnow">Trending Now</span></u></div>
+
+		<!--.........................................................SPEECHBUBBLE WRITER TOOLS..................................................................-->
+
+		<div id="textbubble3" class="bubble me"><u><span id="writertools">Writer Tools</span></u>
+			<br />
+			<br />
+			<a target="_blank" href="http://www.webster-dictionary.org/">| Dictionary |</a>
+			<a target="_blank" href="http://www.thesaurus.com/"> Thesaurus |</a>
+			<a target="_blank" href="http://www.edufind.com/english-grammar/english-grammar-guide/"> Grammar Guide |</a>
+		</div>
+
+		<!--.........................................................SPEECHBUBBLE TRENDING NOW..................................................................-->
+
+		<div id="textbubble4" class="bubble me"><u><span id="trendingnow">Trending Now</span></u>
+			<li><a target="_blank" href="http://www.cnn.com/politics">Politics-2016 Presidential Elections</a></li>
+			<li><a target="_blank" href="http://gizmodo.com/tag/smartphones">Technology-Smartphones</a></li>
+			<li><a target="_blank" href="http://www.eonline.com/shows/e_news">Entertainment-Hollywood</a></li>
+
+
+		</div>
 	</div>
 </div>

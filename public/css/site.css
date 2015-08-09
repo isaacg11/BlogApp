@@ -136,10 +136,10 @@
 		font-family: monospace;
 	}
 	#addblogbox{
-		margin-top: 60px;
-		margin-left: 451px;
+		margin-top: 48px;
+		margin-left: 364px;
 		width: 35%;
-		height: 530px;
+		height: 490px;
 	}
 	.flex-container {
 		display:flex;
@@ -242,41 +242,36 @@
 	}
 	#textbubble1{
 		margin-top: -520px;
-		margin-left: 1000px;
+		margin-left: 800px;
 		width: 330px;
 		height: 100px;
 	}
 	#textbubble2{
-		margin-top: -570px;
-		margin-right: -14px;
+		margin-top: -530px;
+		margin-right: 70px;
 	}
 	#textbubble3{
 		margin-top: -260px;
-		margin-left: 1000px;
+		margin-left: 800px;
 		width: 330px;
 		height: 100px;	
 	}
-	/*#textbubble4{
-		margin-top: -370px;
-		margin-right: -1020px;
-		width: 380px;
+
+	#textbubble4{
+		margin-top: -390px;
+		margin-left: 800px;
+		width: 330px;
 		height: 100px;
-		}*/
-		#textbubble4{
-			margin-top: -390px;
-			margin-left: 1000px;
-			width: 330px;
-			height: 100px;
-		}
-		#social{
-			font-family: monospace;
-			background-color: yellow;
-		}
-		#writertools{
-			font-family: monospace;
-			background-color: yellow;
-		}
-		#trendingnow{
-			font-family: monospace;
-			background-color: yellow;
-		}
+	}
+	#social{
+		font-family: monospace;
+		background-color: yellow;
+	}
+	#writertools{
+		font-family: monospace;
+		background-color: yellow;
+	}
+	#trendingnow{
+		font-family: monospace;
+		background-color: yellow;
+	}
