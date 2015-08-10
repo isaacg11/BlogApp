@@ -150,7 +150,7 @@
 
 	.task-col {
 		width:40%;
-		margin-left: 408px;
+		margin-left: 350px;
 		height: 300px;
 	}
 	.panel-title {
@@ -175,7 +175,8 @@
 	}
 	#headerbodypublic{
 		font-size: 32px;
-		margin-left: 580px;
+		margin-left: 470px;
+		color:#FFFFFF;
 	}
 	#backtoprofile3{
 		float:right;
@@ -243,7 +244,7 @@
 	#textbubble1{
 		margin-top: -520px;
 		margin-left: 800px;
-		width: 330px;
+		width: 310px;
 		height: 100px;
 	}
 	#textbubble2{
@@ -253,14 +254,14 @@
 	#textbubble3{
 		margin-top: -260px;
 		margin-left: 800px;
-		width: 330px;
+		width: 300px;
 		height: 100px;	
 	}
 
 	#textbubble4{
 		margin-top: -390px;
 		margin-left: 800px;
-		width: 330px;
+		width: 300px;
 		height: 100px;
 	}
 	#social{
@@ -275,3 +276,13 @@
 		font-family: monospace;
 		background-color: yellow;
 	}
+	#backtopublic{
+		float: right;
+	}
+	#commentbox{
+		height: 200px;
+	}
+	#commentauthor{
+		font-size: 10px;
+	}
+	

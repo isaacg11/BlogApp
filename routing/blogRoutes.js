@@ -68,7 +68,7 @@ router.post('/the/apiCall/deleteBlog/:blog',function(req,res,next){
 		});
 	});
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//GETS ALL BLOGS THAT ARE NOT DELETED
+//GETS ALL BLOGS THAT ARE NOT DELETED (PROFILE & PUBLIC)
 router.get('/the/apiCall/Blog', function(req, res, next) {
 	var query = blogModel.find({dateDeleted: null});
 	query.exec(function(err, blogs) {
@@ -76,10 +76,28 @@ router.get('/the/apiCall/Blog', function(req, res, next) {
 		res.json(blogs);
 	});
 });
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//GETS A SINGLE BLOG FOR COMMENT FUNCTION
+router.get('/the/apiCall/Blog/:blog', function(req, res, next) {
+	res.send(req.blog);
+});
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
-
-
-
-
+//POST COMMENT
+router.post('/the/apiCall/Blog/:blog/comment', auth, function(req, res, next) {
+	console.log("reached the route");
+	var newComment = req.body;
+	newComment.dateCreated = new Date();
+	console.log(req.payload);
+	newComment.user = req.payload.id;
+	blogModel.update({_id: req.blog._id}, {$push: { comments: newComment }}, function(err, numberAffected) {
+		if(err) return next(err);
+		blogModel.findOne({_id: req.blog._id}, function(err, blog) {
+			if(err) return next(err);
+			var comment = blog.comments[blog.comments.length - 1];
+			res.send({_id: comment._id, dateCreated: comment.dateCreated});
+		});
+	});
+});
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 module.exports = router;

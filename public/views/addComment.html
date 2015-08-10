@@ -1,0 +1,29 @@
+ <div ng-controller="commentDetailController as vm">
+ 	<a id="backtopublic" ui-sref="Public">Public></a>
+ 	<div class="container well">
+ 		<div class="hcenter">
+ 			<h4>Add Comment!</h4>
+ 			<br>
+ 		</div>
+ 	</div>
+ 	<!--.............................................................ADD COMMENT BOX.......................................................-->
+ 	<div>
+ 		<div class="container well">
+ 			<input id="commentbox" class="form-control" placeholder="Comment here..." ng-model="vm.comment.body">
+ 			<button class="btn btn-danger btn-xs" ui-sref="Public">Cancel</button>
+ 			<button class="btn btn-info btn-xs" ng-click="vm.createComment();">Submit</button>
+ 		</div>
+ 	</div>
+ 	<hr/>
+ 	<!--.................................................................OUTPUT.......................................................-->
+
+ 	<div ng-repeat="c in vm.blog.comments">
+ 		<div class="well container">
+ 			<p id="commentoutput"><i>"{{c.body}}"</i></p>
+ 			<br>
+ 			<span id="commentauthor"><i>comment_by: </i> {{c.username.user}}</span>
+
+ 		</div>
+ 		<br>
+ 	</div>
+ </div>

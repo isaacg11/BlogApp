@@ -10,7 +10,7 @@
 		var o = {}; // this is an empty object that will take all the functions and put them in the obj. "o" 
 		o.blogS = []; //this is an empty array
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-
+//POST BLOG
 		o.postBlog = function(blog){ //this line is a function that uses the data passed from the createCommentController and puts it in the parameter.
 			var q = $q.defer(); //this line creates a variable called 'q' which holds $q.defer().
 			$http.post('/the/apiCall/Blog', blog).success(function(res){ //this line says if the post request is successful TO THE SERVER to run the func., but not error().
@@ -24,15 +24,16 @@
 			return q.promise; //this line turns the function call in the cCController into an object and to activate when the q.whatever method is used.
 		};
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-
+//GET ALL BLOGS
 o.getBlogs = function(){ 
 	var q = $q.defer();
-			$http.get('/the/apiCall/Blog').success(function(res){ //this line sends a get request to '/the/apiCall/Comment'. 
-				q.resolve(res);
-			});
-			return q.promise; //this line turns the function call in the cCController into an object and to activate when the q.whatever method is used.
-		};
+	$http.get('/the/apiCall/Blog').success(function(res){ 
+		q.resolve(res);
+	});
+	return q.promise; 
+};
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//GET BLOGS BY USER ID
 // o.getBlogsUser = function(userId, blog) {
 // 	var q = $q.defer();
 // 	$http.get('/the/apiCall/BlogUser/' + userId + '/blog', blog, {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}}).success(function(res) {
@@ -43,7 +44,7 @@ o.getBlogs = function(){
 // 	return q.promise;
 // };
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//DELETE POST CALL
+//DELETE BLOG
 o.deleteBlog = function(blog){ 
 	alert("Are you sure you want to remove this blog?");
 	var q = $q.defer();
@@ -53,7 +54,27 @@ o.deleteBlog = function(blog){
 	});
 	return q.promise; 
 };
-// //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//GET BLOG BY ID
+o.getBlogID = function(id) {
+	var q = $q.defer();
+	$http.get('/the/apiCall/Blog/' + id).success(function(res){
+		q.resolve(res);
+	});
+	return q.promise;
+};
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//CREATE COMMENT
+o.createComment = function(blogId, comment) {
+	var q = $q.defer();
+	$http.post('/the/apiCall/Blog/' + blogId + '/comment', comment, {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}}).success(function(res) {
+		comment.user = {};
+		comment.user.username = JSON.parse(atob(localStorage['token'].split('.')[1])).username;
+		q.resolve(res);
+	});
+	return q.promise;
+};
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		return o; //this line says to take all the functions in the obj 'o' and then inject them into the HF for use in the controllers.
 	}
 })();
