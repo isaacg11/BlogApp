@@ -1,6 +1,6 @@
 (function() {
 	'use strict';
-	angular.module('app', ['ui.router'])
+	angular.module('app', ['ui.router','ui.bootstrap'])
 	.config(Config);
 	Config.$inject = ['$stateProvider', '$urlRouterProvider'];
 	function Config($stateProvider, $urlRouterProvider) {
@@ -29,13 +29,13 @@ state('Add', {
 	templateUrl: 'views/addBlog.html'
 }).
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//EDIT BLOG
-state('Edit', {
-	url:'/Edit',
-	templateUrl: 'views/editBlog.html'
-}).
+// //EDIT BLOG
+// state('Edit', {
+// 	url:'/Edit',
+// 	templateUrl: 'views/editBlog.html'
+// }).
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//PUBLIC BLOGS
+//PUBLIC
 state('Public', {
 	url:'/Public',
 	templateUrl: 'views/public.html'
@@ -45,8 +45,15 @@ state('Public', {
 state('Comment', {
 	url:'/Comment/:id',
 	templateUrl: 'views/addComment.html'
+}).
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//HELP
+state('Help', {
+	url:'/Help',
+	templateUrl: 'views/help.html'
 });
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
 $urlRouterProvider.otherwise('/');
 }
 })();

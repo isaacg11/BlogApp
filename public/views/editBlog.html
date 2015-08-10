@@ -1,4 +1,19 @@
-<div id="editBlogImage">
-	<h1 class="headeredit">Edit_MyBlog</h1>
-	<a id="backtoprofile2" ui-sref="Profile">Profile > </a>
-</div>
+ <div id="editBlogImage">
+ 	<h1 class="headeredit">Edit_MyBlog</h1>
+
+ 	<!--..............................MODAL.............................-->
+ 	<form ng-submit="editBlog(b)">
+ 		<hr>
+ 		<br>
+ 		<div class="row">
+ 			<span class="col-sm-10 col-sm-offset-1">
+ 				<textarea class="form-control" rows="10" ng-model="blog.description"></textarea>
+ 			</span>
+ 		</div>
+ 		<hr>
+ 		<div id="submitedit" class="row">
+ 			<button class="btn btn-primary col-sm-10 col-sm-offset-1" type="submit">Submit</button>
+ 		</div>
+ 		<br>
+ 	</form>
+ </div>

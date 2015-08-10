@@ -42,11 +42,13 @@
 						<br />
 						<br />
 						<br />
-						<div id="timedate" class="active" id="date">_{{b.dateCreated | date: "short"}}</div>
+						<div id="timedate" class="active" id="date"> {{b.dateCreated | date: "short"}}</div>
 					</div>
 					<div class="panel-footer hcenter">
 						<a id="remove" ng-click="nav.deleteBlog(b);">| Remove Blog |</a>
-						<span><button ui-sref="Edit" class="btn btn-warning btn-xs">Edit Blog</button></span>
+
+						<span><button ng-click="nav.openEdit(b)" class="btn btn-warning btn-xs">Edit Blog</button></span>
+
 					</div>
 				</div>
 			</div>

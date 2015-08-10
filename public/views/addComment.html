@@ -1,5 +1,5 @@
  <div ng-controller="commentDetailController as vm">
- 	<a id="backtopublic" ui-sref="Public">Public></a>
+ 	<a id="backtopublic" ui-sref="Public">Back ></a>
  	<div class="container well">
  		<div class="hcenter">
  			<h4>Add Comment!</h4>
@@ -17,11 +17,11 @@
  	<hr/>
  	<!--.................................................................OUTPUT.......................................................-->
 
- 	<div ng-repeat="c in vm.blog.comments">
+ 	<div ng-repeat="c in vm.blog.comments | orderBy: '-dateCreated' ">
  		<div class="well container">
  			<p id="commentoutput"><i>"{{c.body}}"</i></p>
  			<br>
- 			<span id="commentauthor"><i>comment_by: </i> {{c.username.user}}</span>
+ 			<span id="commentauthor"><i></i> {{c.dateCreated | date: "short"}}</span>
 
  		</div>
  		<br>

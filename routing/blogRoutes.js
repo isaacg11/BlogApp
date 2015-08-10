@@ -5,6 +5,16 @@ var blogModel = mongoose.model('blogModel'); //defines 'Comment.js' as a mongoos
 var jwt = require('express-jwt');
 var auth = jwt({secret: 'Hashbrowns', userProperty: 'payload'});
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//EDIT BLOG
+// router.put('/:blog', function(req, res, next) {
+// 	blogModel.update({_id : req.blog._id}, req.body, {multi: false}, function callback(err, numAffected) {
+// 		if(err) return next(err);
+// 		else if (numAffected.nModified > 1) res.status(400).send("TOO MANY TODOS UPDATED!!!!");
+// 		else if (numAffected.nModified !== 1) res.status(400).send("No todos updated");
+// 		else res.status(200).send("Good to go!");
+// 	});
+// });
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //ADD BLOG
 router.post('/the/apiCall/Blog', function(req,res,next){ //this line activates when a post request is made to the 'post/apiCall/Comment' url.
 	var createdBlog = new blogModel(req.body); // this line creates a variable 'createdComment' which is equal to the Schema configured request body;

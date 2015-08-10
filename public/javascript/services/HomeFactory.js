@@ -10,6 +10,13 @@
 		var o = {}; // this is an empty object that will take all the functions and put them in the obj. "o" 
 		o.blogS = []; //this is an empty array
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+// EDIT BLOG
+o.editBlog = function(editB, b) {
+	$http.put('/the/apiCall/EditBlog' + b._id).success(function(data){
+		o.blogS[o.blogS.indexOf(b)] = angular.copy(editB);
+	});
+};
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //POST BLOG
 		o.postBlog = function(blog){ //this line is a function that uses the data passed from the createCommentController and puts it in the parameter.
 			var q = $q.defer(); //this line creates a variable called 'q' which holds $q.defer().

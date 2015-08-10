@@ -1,6 +1,6 @@
 (function() {
 	'use strict';
-	angular.module('app', ['ui.router'])
+	angular.module('app', ['ui.router','ui.bootstrap'])
 	.config(Config);
 	Config.$inject = ['$stateProvider', '$urlRouterProvider'];
 	function Config($stateProvider, $urlRouterProvider) {
@@ -29,13 +29,13 @@ state('Add', {
 	templateUrl: 'views/addBlog.html'
 }).
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//EDIT BLOG
-state('Edit', {
-	url:'/Edit',
-	templateUrl: 'views/editBlog.html'
-}).
+// //EDIT BLOG
+// state('Edit', {
+// 	url:'/Edit',
+// 	templateUrl: 'views/editBlog.html'
+// }).
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//PUBLIC BLOGS
+//PUBLIC
 state('Public', {
 	url:'/Public',
 	templateUrl: 'views/public.html'
@@ -45,8 +45,15 @@ state('Public', {
 state('Comment', {
 	url:'/Comment/:id',
 	templateUrl: 'views/addComment.html'
+}).
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//HELP
+state('Help', {
+	url:'/Help',
+	templateUrl: 'views/help.html'
 });
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
 $urlRouterProvider.otherwise('/');
 }
 })();
@@ -123,11 +130,32 @@ else $state.go('Comment');
 (function() {
 	'use strict';
 	angular.module('app')
+	.controller('editModalController', editModalController);
+
+	editModalController.$inject = ['$modalInstance', '$scope', 'blog'];
+
+	function editModalController($modalInstance, $scope, blog) {
+		var vm = this;
+		console.log(blog.description);
+		$scope.blog = blog;
+	// ------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+	// EDIT BLOG
+	$scope.editBlog = function() {
+		console.log('reached the editModalController');
+		$modalInstance.close(vm.blog);
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+};
+}
+})();
+(function() {
+	'use strict';
+	angular.module('app')
 	.controller('navBarController', navBarController);
 
-	navBarController.$inject = ['userFactory', 'HomeFactory','$state','$window'];
+	navBarController.$inject = ['userFactory', 'HomeFactory','$state','$modal'];
 
-	function navBarController(userFactory, HomeFactory, $state) {
+	function navBarController(userFactory, HomeFactory, $state,$modal) {
 		var vm = this;
 		vm.user = {};
 		vm.status = userFactory.status;
@@ -136,26 +164,48 @@ else $state.go('Comment');
 		vm.logout = userFactory.logout;
 		// vm.deleteBlog = HomeFactory.deleteBlog;
 		vm.blogS = HomeFactory.blogS;
-//---------------------------------------------------------------------------LOGIN---------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------//
+//LOGIN
 function login() {
 	userFactory.login(vm.user).then(function(){
 		$state.go('Profile');
 	});
 }
-//-------------------------------------------------------------------PROFILE>GET BLOGS BY USER ID-------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------//
+//PROFILE>GET BLOGS BY USER ID
 // HomeFactory.getBlogsUser().then(function(blog){
 // 	vm.blogS = blog;
 // });
 
-//------------------------------------------------------------------------PROFILE>DELETE-----------------------------------------------------------------------------//
+//----------------------------------------------------------------------------------------------------------------------------------------------------//
+//PROFILE>DELETE
 function deleteBlog(b) {
 	HomeFactory.deleteBlog(b).then(function(){
 		HomeFactory.getBlogs();
 	});
 }
 
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//
+//PROFILE>EDIT
+vm.openEdit = function (b) {
+	
+	var instance = $modal.open({
+		controller: 'editModalController',
+		templateUrl: './../views/editBlog.html',
+		resolve: {
+			blog: function() {
+				return b;
+			}
+		}
+	});
+	instance.result.then(function(editB) {
+		HomeFactory.editBlog(editB, b);
+	}, function() {
+		console.log("inside of the result");
+	});
+};
 
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//
 }
 })();
 
@@ -197,6 +247,13 @@ function register() {
 	function HomeFactory($http, $q) {
 		var o = {}; // this is an empty object that will take all the functions and put them in the obj. "o" 
 		o.blogS = []; //this is an empty array
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+// EDIT BLOG
+o.editBlog = function(editB, b) {
+	$http.put('/the/apiCall/EditBlog' + b._id).success(function(data){
+		o.blogS[o.blogS.indexOf(b)] = angular.copy(editB);
+	});
+};
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //POST BLOG
 		o.postBlog = function(blog){ //this line is a function that uses the data passed from the createCommentController and puts it in the parameter.

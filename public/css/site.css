@@ -120,10 +120,6 @@
 		top:0;
 		z-index: -9;
 	}
-	#backtoprofile2{
-		float:right;
-		color:blue;
-	}
 	.headeredit{
 		text-align: center;
 		font-family: monospace;
@@ -182,6 +178,7 @@
 		float:right;
 		font-size: 14px;
 		margin-top: 1.5px;
+		color: #FFFFFF;
 
 	}
 	#remove{
@@ -285,4 +282,42 @@
 	#commentauthor{
 		font-size: 10px;
 	}
-	
+	#newblogpublic{
+		color:#FFFFFF;
+	}
+	#report{
+		color:#FFFFFF;
+	}
+	#myaccountbox{
+		height: 500px;
+		width: 440px;
+		border: solid 1px;
+		margin-top: 50px;
+	}
+	#headeraccounthelp{
+		text-align: center;
+		font-family: monospace;
+	}
+	#myreportingbox{
+		height: 500px;
+		width: 440px;
+		border: solid 1px;
+		margin-top: 50px;
+	}
+	#headerreportinghelp{
+		text-align: center;
+		font-family: monospace;
+	}
+	#helpimage{
+		margin: auto;
+		margin-left: 140px;
+	}
+	#topic{
+		margin-left: 440px;
+		font-family: sans-serif;
+	}
+	#submitedit{
+		border-radius: 40px;
+		width: 50%;
+		margin-left: 300px;
+	}
