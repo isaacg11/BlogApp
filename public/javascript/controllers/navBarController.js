@@ -12,7 +12,6 @@
 		vm.login = login;
 		vm.deleteBlog = deleteBlog;
 		vm.logout = userFactory.logout;
-		// vm.deleteBlog = HomeFactory.deleteBlog;
 		vm.blogS = HomeFactory.blogS;
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------//
 //LOGIN
@@ -22,10 +21,10 @@ function login() {
 	});
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------//
-//PROFILE>GET BLOGS BY USER ID
-// HomeFactory.getBlogsUser().then(function(blog){
-// 	vm.blogS = blog;
-// });
+// PROFILE>GET BLOGS BY USER ID
+HomeFactory.getBlogsUser().then(function(blog){
+	vm.blogS.user = blog;
+});
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------//
 //PROFILE>DELETE
@@ -38,7 +37,7 @@ function deleteBlog(b) {
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//
 //PROFILE>EDIT
 vm.openEdit = function (b) {
-	
+
 	var instance = $modal.open({
 		controller: 'editModalController',
 		templateUrl: './../views/editBlog.html',

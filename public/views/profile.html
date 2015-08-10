@@ -42,8 +42,9 @@
 						<br />
 						<br />
 						<br />
-						<div id="timedate" class="active" id="date"> {{b.dateCreated | date: "short"}}</div>
 					</div>
+					<div id="timedate" class="active" id="date">~{{b.dateCreated | date: "short"}}~</div>
+
 					<div class="panel-footer hcenter">
 						<a id="remove" ng-click="nav.deleteBlog(b);">| Remove Blog |</a>
 

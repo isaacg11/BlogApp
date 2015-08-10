@@ -61,7 +61,6 @@
 	background-position-x:50%;
 	background-position-y:50%;
 	background-size: cover;
-	position: fixed;
 	width: 100%;
 	height: 100%;
 	left: 0;
@@ -74,7 +73,7 @@
 	background-position-y:50%;
 	background-size: cover;
 	position: static;
-	width: 100%;
+	/*width: 100%;
 	height: 100%;
 	left: 0;
 	top:0;
@@ -108,21 +107,10 @@
 		float:right;
 		color:#FFFFFF;
 	}
-	#editBlogImage{
-		background-image: url("http://static.simpledesktops.com/uploads/desktops/2011/11/05/Notebook.png");
-		background-position-x:50%;
-		background-position-y:50%;
-		background-size: cover;
-		position: fixed;
-		width: 100%;
-		height: 100%;
-		left: 0;
-		top:0;
-		z-index: -9;
-	}
-	.headeredit{
+	#headeredit{
 		text-align: center;
 		font-family: monospace;
+		color:#FFFFFF;
 	}
 	#welcome{
 		font-size: 20px;
@@ -139,24 +127,26 @@
 	}
 	.flex-container {
 		display:flex;
-		width:100%;
-		margin-top: 170px;
+		width:150%;
+		margin-top: 80px;
 		flex-wrap: wrap;
 	}
 
 	.task-col {
 		width:40%;
-		margin-left: 350px;
-		height: 300px;
+		margin-left: 230px;
+		height: 380px;
 	}
 	.panel-title {
 		font-size: 1.5em;
 	}
 	#timedate{
 		font-size: 10px;
+		margin-top: -20px;
 	}
 	#blogbody{
 		background-color: rgba(255, 255, 102,.5);
+		height: 230px;
 	}
 	.headerpublic{
 		margin-top: -10px;
@@ -186,6 +176,7 @@
 	}
 	#author{
 		font-size: 10px;
+		margin-top: -20px;
 	}
 	#footer{
 		background-color: #E6E6E6;
@@ -319,5 +310,5 @@
 	#submitedit{
 		border-radius: 40px;
 		width: 50%;
-		margin-left: 300px;
+		margin-left: 150px;
 	}

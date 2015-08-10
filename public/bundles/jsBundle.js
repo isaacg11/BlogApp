@@ -29,12 +29,6 @@ state('Add', {
 	templateUrl: 'views/addBlog.html'
 }).
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-// //EDIT BLOG
-// state('Edit', {
-// 	url:'/Edit',
-// 	templateUrl: 'views/editBlog.html'
-// }).
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //PUBLIC
 state('Public', {
 	url:'/Public',
@@ -162,7 +156,6 @@ else $state.go('Comment');
 		vm.login = login;
 		vm.deleteBlog = deleteBlog;
 		vm.logout = userFactory.logout;
-		// vm.deleteBlog = HomeFactory.deleteBlog;
 		vm.blogS = HomeFactory.blogS;
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------//
 //LOGIN
@@ -172,10 +165,10 @@ function login() {
 	});
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------//
-//PROFILE>GET BLOGS BY USER ID
-// HomeFactory.getBlogsUser().then(function(blog){
-// 	vm.blogS = blog;
-// });
+// PROFILE>GET BLOGS BY USER ID
+HomeFactory.getBlogsUser().then(function(blog){
+	vm.blogS.user = blog;
+});
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------//
 //PROFILE>DELETE
@@ -188,7 +181,7 @@ function deleteBlog(b) {
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//
 //PROFILE>EDIT
 vm.openEdit = function (b) {
-	
+
 	var instance = $modal.open({
 		controller: 'editModalController',
 		templateUrl: './../views/editBlog.html',
@@ -278,16 +271,16 @@ o.getBlogs = function(){
 	return q.promise; 
 };
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//GET BLOGS BY USER ID
-// o.getBlogsUser = function(userId, blog) {
-// 	var q = $q.defer();
-// 	$http.get('/the/apiCall/BlogUser/' + userId + '/blog', blog, {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}}).success(function(res) {
-// 		blog.user = {};
-// 		blog.user.username = JSON.parse(atob(localStorage['token'].split('.')[1])).username;
-// 		q.resolve(res);
-// 	});
-// 	return q.promise;
-// };
+// GET BLOGS BY USER ID
+o.getBlogsUser = function() {
+	var q = $q.defer();
+	$http.get('/the/apiCall/BlogUser/blog',{headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}}).success(function(blogs) {
+		blogs.user = {};
+		blogs.user.username = JSON.parse(atob(localStorage['token'].split('.')[1])).username;
+		q.resolve(blogs);
+	});
+	return q.promise;
+};
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //DELETE BLOG
 o.deleteBlog = function(blog){ 

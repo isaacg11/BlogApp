@@ -40,16 +40,16 @@ o.getBlogs = function(){
 	return q.promise; 
 };
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//GET BLOGS BY USER ID
-// o.getBlogsUser = function(userId, blog) {
-// 	var q = $q.defer();
-// 	$http.get('/the/apiCall/BlogUser/' + userId + '/blog', blog, {headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}}).success(function(res) {
-// 		blog.user = {};
-// 		blog.user.username = JSON.parse(atob(localStorage['token'].split('.')[1])).username;
-// 		q.resolve(res);
-// 	});
-// 	return q.promise;
-// };
+// GET BLOGS BY USER ID
+o.getBlogsUser = function() {
+	var q = $q.defer();
+	$http.get('/the/apiCall/BlogUser/blog',{headers: {Authorization: 'Bearer ' + localStorage.getItem('token')}}).success(function(blogs) {
+		blogs.user = {};
+		blogs.user.username = JSON.parse(atob(localStorage['token'].split('.')[1])).username;
+		q.resolve(blogs);
+	});
+	return q.promise;
+};
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //DELETE BLOG
 o.deleteBlog = function(blog){ 

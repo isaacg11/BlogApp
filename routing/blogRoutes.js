@@ -28,34 +28,30 @@ router.post('/the/apiCall/Blog', function(req,res,next){ //this line activates w
 	});
 });
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//GET ALL BLOGS (PUBLIC)
-	// router.get('/the/apiCall/Blog', function(req,res, next) { //this line is a func. that runs when a get request is made at '/the/apiCall/Comment'.
-	// 	blogModel.find({}).exec(function(err,blog){ //this line says to connect to mongo, find all({}) data in the collection, and then execute the function.
-	// 		if (err) return next(err);
-	// 		res.send(blog); //this line says to send the response with 'dbcomments' data received from mongodb to THE CLIENT.
-	// 	});
-	// });
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//DEFINE 'USER' PARAMETER 
-// router.param('user', function(req,res,next,id){ //this line says to find the parameter with the name of 'comment'
-// 	blogModel.find({_id: id}).exec(function(err, blogs){ //this line says to use the 'Comment' model and find the collection, and then execute the next function.
-// 		if(err) return next (err); 
-// 		req.blogs = blogs[0]; //this line places the 'comment' parameter on the request and makes it equal to 'comments' at the index of 1...????
-// 		next(); //this line says to go to the parameter 'comment' with the newly configured data to use.
-// 	});
-// });
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//GET BLOG BY USER ID
-// router.get('/the/apiCall/BlogUser/:user/blog', auth, function(req,res, next) { 
-// 	var newBlog = req.body;
-// 	console.log(req.payload);
-// 	newBlog.user = req.payload.id;
-// 	blogModel.findOne({_id: req.user._id}, function(err, user){
-// 		if(err) return next (err);
-// 		var blog = user.blog[user.blogs.length-1];
-// 		res.send({_id: blog._id, dateCreated: blog.dateCreated});
-// 	});
-// });
+// GET ALL BLOGS (PUBLIC)
+	router.get('/the/apiCall/Blog', function(req,res, next) { //this line is a func. that runs when a get request is made at '/the/apiCall/Comment'.
+		blogModel.find({}).exec(function(err,blog){ //this line says to connect to mongo, find all({}) data in the collection, and then execute the function.
+			if (err) return next(err);
+			res.send(blog); //this line says to send the response with 'dbcomments' data received from mongodb to THE CLIENT.
+		});
+	});
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+// DEFINE 'USER' PARAMETER 
+router.param('user', function(req,res,next,id){ //this line says to find the parameter with the name of 'comment'
+	blogModel.find({_id: id}).exec(function(err, blogs){ //this line says to use the 'Comment' model and find the collection, and then execute the next function.
+		if(err) return next (err); 
+		req.blogs = blogs[0]; //this line places the 'comment' parameter on the request and makes it equal to 'comments' at the index of 1...????
+		next(); //this line says to go to the parameter 'comment' with the newly configured data to use.
+	});
+});
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+// GET BLOG BY USER ID
+router.get('/the/apiCall/BlogUser/blog', auth, function(req,res, next) { 
+	blogModel.find({_id: req.payload.id}).exec(function(err, blogs){
+		if(err) return next (err);
+		res.send(blogs);
+	});
+});
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //DEFINES 'BLOG' PARAMETER
 router.param('blog', function(req,res,next,id){ 

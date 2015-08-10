@@ -42,8 +42,9 @@
 					<br />
 					<br />
 					<br />
-					<div id="author" class="active" id="author"><i>blogged_by: </i>{{b.user}} @ {{b.dateCreated | date: "short"}}</div>
 				</div>
+				<div id="author" class="active" id="author"><i>~blogged_by: </i>{{b.user}} @ {{b.dateCreated | date: "short"}}~</div>
+
 				<div id="footer" class="panel-footer hcenter">
 					<a ui-sref="Comment({id: b._id})">Comment |</a>
 					<span><a href="#" 
