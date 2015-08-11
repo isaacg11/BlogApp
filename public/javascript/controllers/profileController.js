@@ -3,9 +3,9 @@
 	angular.module('app')
 	.controller('profileController', profileController);
 
-	profileController.$inject = ['userFactory', 'profileFactory','$state','$modal'];
+	profileController.$inject = ['HomeFactory','userFactory', 'profileFactory','$state','$modal'];
 
-	function profileController(userFactory, profileFactory, $state, $modal) {
+	function profileController( HomeFactory, userFactory, profileFactory, $state, $modal) {
 		var vm = this;
 		vm.user = {};
 		vm.status = userFactory.status;
@@ -17,19 +17,19 @@
 //----------------------------------------------------------------------------------------------------------------------------------------------------//
 // PROFILE>GET BLOGS BY USER ID
 profileFactory.getBlogsUser().then(function(blog){
-	
 	vm.blogS = blog;
-
 });
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------//
 //PROFILE>DELETE
 function deleteBlog(b) {
 	profileFactory.deleteBlog(b).then(function(){
-		profileFactory.getBlogs();
+		// console.log("you made it back");
+		vm.blogS.length = -1;
+		HomeFactory.getBlogs();
+
 	});
 }
-
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//
 //PROFILE>EDIT
 vm.openEdit = function (b) {

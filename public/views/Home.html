@@ -1,61 +1,63 @@
 <div ng-controller="HomeController as vm" class="publicImage">
-	<!--................................................................HEADER...........................................................................................f-->
+	<div id="backgroundcolorpublic">
+		<!--................................................................HEADER...........................................................................................f-->
 
-	<nav id="publicnavbar" class="navbar navbar-default">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li class="headerpublic"><h2 id="headerbodypublic">Blog_Wall</h2></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a id="report" ui-sref="Help">| Help |</a></li>
-					<li><a id="newblogpublic" ui-sref="Add">| +New Blog |</a></li>
-					<li><a id="backtoprofile3" ui-sref="Profile"> Profile ></a></li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
-	<!--................................................................BLOG BOX.....................................................................................-->
-	<a id="topic">Topic of the day: 2016 Presidential Candidates</a>
-
-	<div class="flex-container">
-		<div ng-repeat="b in vm.blogS | orderBy: '-dateCreated'"  class="task-col"> <!--this line says that it will loop through all the properties in vm.comments-->
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<span class="panel-title"></span>
+		<nav id="publicnavbar" class="navbar navbar-default">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
 				</div>
-				<div id="blogbody" class="panel panel-body">
-					<br />
-					<p id="description" class="hcenter pcontent">"{{b.description}}"</p> 
-					<br />
-					<br />
-					<br />
-					<br />
-				</div>
-				<div id="author" class="active" id="author"><i>~blogged_by: </i>{{b.user}} @ {{b.dateCreated | date: "short"}}~</div>
 
-				<div id="footer" class="panel-footer hcenter">
-					<a ui-sref="Comment({id: b._id})">Comment |</a>
-					<span><a href="#" 
-						onclick="
-						window.open(
-						'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
-						'facebook-share-dialog', 
-						'width=626,height=436'); 
-						return false;">
-						Share on Facebook
-					</a>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="headerpublic"><h2 id="headerbodypublic">Blog_Wall</h2></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a id="report" ui-sref="Help">| Help |</a></li>
+						<li><a id="newblogpublic" ui-sref="Add">| +New Blog |</a></li>
+						<li><a id="backtoprofile3" ui-sref="Profile"> Profile ></a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+		<!--................................................................BLOG BOX.....................................................................................-->
+		<a id="topic">Topic of the day: 2016 Presidential Candidates</a>
+
+		<div class="flex-container">
+			<div ng-repeat="b in vm.blogS | orderBy: '-dateCreated'"  class="task-col"> <!--this line says that it will loop through all the properties in vm.comments-->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<span class="panel-title"></span>
+					</div>
+					<div id="blogbody" class="panel panel-body">
+						<br />
+						<p id="description" class="hcenter pcontent">"{{b.description}}"</p> 
+						<br />
+						<br />
+						<br />
+						<br />
+					</div>
+					<div id="author" class="active" id="author"><i>~blogged_by: </i>{{b.user}} @ {{b.dateCreated | date: "short"}}~</div>
+
+					<div id="footer" class="panel-footer hcenter">
+						<a ui-sref="Comment({id: b._id})">Comment |</a>
+						<span><a href="#" 
+							onclick="
+							window.open(
+							'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+							'facebook-share-dialog', 
+							'width=626,height=436'); 
+							return false;">
+							Share on Facebook
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>

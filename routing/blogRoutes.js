@@ -5,8 +5,8 @@ var blogModel = mongoose.model('blogModel'); //defines 'Comment.js' as a mongoos
 var jwt = require('express-jwt');
 var auth = jwt({secret: 'Hashbrowns', userProperty: 'payload'});
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//EDIT BLOG
-// router.put('/:blog', function(req, res, next) {
+// // EDIT BLOG
+// router.post('/:blog', function(req, res, next) {
 // 	blogModel.update({_id : req.blog._id}, req.body, {multi: false}, function callback(err, numAffected) {
 // 		if(err) return next(err);
 // 		else if (numAffected.nModified > 1) res.status(400).send("TOO MANY TODOS UPDATED!!!!");
