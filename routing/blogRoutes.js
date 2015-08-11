@@ -32,9 +32,11 @@ router.post('/the/apiCall/Blog', auth, function(req,res,next){ //this line activ
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 // GET ALL BLOGS (PUBLIC)
 	router.get('/the/apiCall/Blog', function(req,res, next) { //this line is a func. that runs when a get request is made at '/the/apiCall/Comment'.
-		blogModel.find({}).exec(function(err,blog){ //this line says to connect to mongo, find all({}) data in the collection, and then execute the function.
+		blogModel.find({dateDeleted: null}).populate('user', 'username _id')
+		.exec(function(err,blogs){ //this line says to connect to mongo, find all({}) data in the collection, and then execute the function.
 			if (err) return next(err);
-			res.send(blog); //this line says to send the response with 'dbcomments' data received from mongodb to THE CLIENT.
+			console.log("executing");
+			res.send(blogs); //this line says to send the response with 'dbcomments' data received from mongodb to THE CLIENT.
 		});
 	});
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -50,7 +52,7 @@ router.param('user', function(req,res,next,id){ //this line says to find the par
 // GET BLOG BY SIGNED IN USER ID
 router.get('/the/apiCall/BlogUser/blog', auth, function(req,res, next) {
 	console.log(req.payload.id);
-	blogModel.find({user: req.payload.id}).exec(function(err, blogs){
+	blogModel.find({user: req.payload.id, dateDeleted: null}).exec(function(err, blogs){
 		if(err) return next (err);
 		res.send(blogs);
 	});
@@ -77,14 +79,7 @@ router.post('/the/apiCall/deleteBlog/:blog',function(req,res,next){
 		});
 	});
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//GETS ALL BLOGS THAT ARE NOT DELETED (PUBLIC)
-router.get('/the/apiCall/Blog', function(req, res, next) {
-	var query = blogModel.find({dateDeleted: null});
-	query.exec(function(err, blogs) {
-		if(err) return next(err);
-		res.json(blogs);
-	});
-});
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //GETS A SINGLE BLOG FOR COMMENT FUNCTION
 router.get('/the/apiCall/Blog/:blog', function(req, res, next) {

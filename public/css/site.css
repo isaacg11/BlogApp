@@ -309,24 +309,35 @@
 	}
 	#backgroundcolorprofile{
 		background-image: url('http://c.shld.net/rpx/i/s/i/spin/10053567/prod_1406879712');
+		background-position-x:50%;
+		background-position-y:50%;
+		background-size: cover;
+/*		position: fixed;
+*/		width: 100%;
+height: 100%;
 
-	}
-	#backgroundcolorpublic{
-		background-image: url('http://bgfons.com/upload/newspaper_texture2847.jpg');
-	}
-	#backgroundcolorhelp{
-		background-color: #248FB2;
-	}
-	#addblogbox2{
-		margin-top: 48px;
-		margin-left: 320px;
-		width: 50%;
-		height: 600px;
-	}
-	#headerhelp{
-		font-family: monospace;
-	}
-	#backtopublic2{
-		color:#FFFFFF;
-		float:right;
-	}
+}
+#backgroundcolorpublic{
+	background-image: url('http://bgfons.com/upload/newspaper_texture2847.jpg');
+}
+#backgroundcolorhelp{
+	background-color: #248FB2;
+	margin-top: -50px;
+}
+#addblogbox2{
+	margin-top: 48px;
+	margin-left: 320px;
+	width: 50%;
+	height: 665px;
+	position: static;
+}
+#headerhelp{
+	font-family: monospace;
+}
+#backtopublic2{
+	color:#FFFFFF;
+	float:right;
+}
+#backgroundcoloraddcomment{
+	background-color: #E6E6E6;
+}

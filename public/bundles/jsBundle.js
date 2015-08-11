@@ -221,8 +221,9 @@ profileFactory.getBlogsUser().then(function(blog){
 function deleteBlog(b) {
 	profileFactory.deleteBlog(b).then(function(){
 		// console.log("you made it back");
-		vm.blogS.length = -1;
-		HomeFactory.getBlogs();
+		profileFactory.getBlogsUser().then(function(blogs) {
+			vm.blogS = blogs;
+		});
 
 	});
 }
