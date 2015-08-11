@@ -1,4 +1,4 @@
-	<div ng-controller="navBarController as nav" class="profileImage">
+	<div ng-controller="profileController as nav" class="profileImage">
 		<!--................................................................NAVBAR..............................................................................-->
 
 		<nav id="profilenavbar" class="navbar navbar-default">
@@ -19,9 +19,9 @@
 						<li id="profileheader"><h2>MyBlog_Profile</h2></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a ui-sref="Public">| Public Blogs |</a></li>
+						<li><a ui-sref="Home">| Public Blogs |</a></li>
 						<li><a ui-sref="Add">| + New Blog |</a></li>
-						<li><a ui-sref="Home" ng-click="nav.logout()">| Logout |</a></li>
+						<li><a ui-sref="Login" ng-click="nav.logout()">| Logout |</a></li>
 						<li id="welcome"><a><b>Hi, {{nav.status.username}}</b></a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->

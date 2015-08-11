@@ -16,13 +16,15 @@ var auth = jwt({secret: 'Hashbrowns', userProperty: 'payload'});
 // });
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //ADD BLOG
-router.post('/the/apiCall/Blog', function(req,res,next){ //this line activates when a post request is made to the 'post/apiCall/Comment' url.
+router.post('/the/apiCall/Blog', auth, function(req,res,next){ //this line activates when a post request is made to the 'post/apiCall/Comment' url.
 	var createdBlog = new blogModel(req.body); // this line creates a variable 'createdComment' which is equal to the Schema configured request body;
 	//Also uses the model 'Comment' to compare the Schema to the req.body and make matches the data configuration in the model. 
 	createdBlog.dateCreated = new Date(); //this line take the newly configured req.body and gives it a property of dateCreated which is equal to new Date().
 	//Also, new Date() is a built in method that uses the current date and assign it to the createdComment object.
-	createdBlog.save(function(err, blog){ //this line uses the mongoose method 'save' to save the 'createdComment' to mongodb. (SERVER SIDE)
-		console.log(blog); //this line says to console log the data.
+	createdBlog.user = req.payload.id;
+	createdBlog.save(function(err, blog){
+	 //this line uses the mongoose method 'save' to save the 'createdComment' to mongodb. (SERVER SIDE)
+		// console.log(blog); //this line says to console log the data.
 		if(err) return next (err);
 		res.send({id: blog._id}); //this line says to send the response with the id it was assigned in the HF back to THE CLIENT.
 	});
@@ -45,9 +47,10 @@ router.param('user', function(req,res,next,id){ //this line says to find the par
 	});
 });
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-// GET BLOG BY USER ID
-router.get('/the/apiCall/BlogUser/blog', auth, function(req,res, next) { 
-	blogModel.find({_id: req.payload.id}).exec(function(err, blogs){
+// GET BLOG BY SIGNED IN USER ID
+router.get('/the/apiCall/BlogUser/blog', auth, function(req,res, next) {
+	console.log(req.payload.id);
+	blogModel.find({user: req.payload.id}).exec(function(err, blogs){
 		if(err) return next (err);
 		res.send(blogs);
 	});
@@ -74,7 +77,7 @@ router.post('/the/apiCall/deleteBlog/:blog',function(req,res,next){
 		});
 	});
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//GETS ALL BLOGS THAT ARE NOT DELETED (PROFILE & PUBLIC)
+//GETS ALL BLOGS THAT ARE NOT DELETED (PUBLIC)
 router.get('/the/apiCall/Blog', function(req, res, next) {
 	var query = blogModel.find({dateDeleted: null});
 	query.exec(function(err, blogs) {

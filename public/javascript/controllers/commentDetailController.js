@@ -2,13 +2,14 @@
 (function() {
 	'use strict';
 	angular.module('app')
-	.controller('commentDetailController', commentDetailController);
+	.controller('CommentDetailController', CommentDetailController);
 
-	commentDetailController.$inject = ['HomeFactory', '$state', '$stateParams'];
+	CommentDetailController.$inject = ['HomeFactory', '$state', '$stateParams'];
 
-	function commentDetailController(HomeFactory, $state, $stateParams) {
+	function CommentDetailController(HomeFactory, $state, $stateParams) {
 		var vm = this;
 		vm.comment = {};
+		console.log(HomeFactory);
 //--------------------------------------------------------------------------------------------------------------------------------------------------------//
 //GET STATEPARAMS ID
 if($stateParams.id) {

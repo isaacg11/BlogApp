@@ -16,7 +16,7 @@ var blogSchema = new mongoose.Schema({ //this function says that when data is se
 		user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
 		dateCreated: Date
 	}],
-	user: String,
+	user: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
 	comments: [{
 		body: String,
 		user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
