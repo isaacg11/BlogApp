@@ -57,268 +57,255 @@
 	z-index: -9;
 }
 
-/*.publicImage{
-	background-image: url("http://lecoindefranie.l.e.pic.centerblog.net/xil7fqo4.jpg");
+#profilenavbar{
+	background-color:#FFB84D;
+	border:solid 1px;
+}
+#publicnavbar{
+	background-color:#248FB2;
+	border:solid 1px;
+	width:100%;
+	text-align: center;
+	height: 55px;
+}
+#addBlogImage{
+	background-image: url("http://4.bp.blogspot.com/-waMwSpXa0Z8/TiuCvDXEk0I/AAAAAAAACUQ/D-iLtRHgbfY/s1600/shutterstock_3210555.jpg");
 	background-position-x:50%;
 	background-position-y:50%;
 	background-size: cover;
-	position: static;
-	/*width: 100%;
+	position: fixed;
+	width: 100%;
 	height: 100%;
 	left: 0;
 	top:0;
-	z-index: -8;
-	zoom:48%;
-	}*/
-	#profilenavbar{
-		background-color:#FFB84D;
-		border:solid 1px;
-	}
-	#publicnavbar{
-		background-color:#248FB2;
-		border:solid 1px;
-		width:100%;
-		text-align: center;
-		height: 55px;
-	}
-	#addBlogImage{
-		background-image: url("http://4.bp.blogspot.com/-waMwSpXa0Z8/TiuCvDXEk0I/AAAAAAAACUQ/D-iLtRHgbfY/s1600/shutterstock_3210555.jpg");
-		background-position-x:50%;
-		background-position-y:50%;
-		background-size: cover;
-		position: fixed;
-		width: 100%;
-		height: 100%;
-		left: 0;
-		top:0;
-		z-index: -9;
-	}
-	#backtoprofile{
-		float:right;
-		color:#FFFFFF;
-	}
-	#headeredit{
-		text-align: center;
-		font-family: monospace;
-		color:#FFFFFF;
-	}
-	#welcome{
-		font-size: 20px;
-	}
-	#profileheader{
-		margin-top: -13px;
-		font-family: monospace;
-	}
-	#addblogbox{
-		margin-top: 48px;
-		margin-left: 364px;
-		width: 35%;
-		height: 490px;
-	}
-	.flex-container {
-		display:flex;
-		width:150%;
-		margin-top: 80px;
-		flex-wrap: wrap;
-	}
+	z-index: -9;
+}
+#backtoprofile{
+	float:right;
+	color:#FFFFFF;
+}
+#headeredit{
+	text-align: center;
+	font-family: monospace;
+	color:#FFFFFF;
+}
+#welcome{
+	font-size: 20px;
+}
+#profileheader{
+	margin-top: -13px;
+	font-family: monospace;
+}
+#addblogbox{
+	margin-top: 48px;
+	margin-left: 364px;
+	width: 35%;
+	height: 490px;
+}
+.flex-container {
+	display:flex;
+	width:1200px;
+	margin-top: 80px;
+	flex-wrap: wrap;
+}
 
-	.task-col {
-		width:40%;
-		margin-left: 230px;
-		height: 380px;
-	}
-	.panel-title {
-		font-size: 1.5em;
-	}
-	#timedate{
-		font-size: 10px;
-		margin-top: -20px;
-	}
-	#blogbody{
-		/*background-color: rgba(255, 255, 102,.5);*/
-		height: 230px;
-		/*background-image: url('http://i107.photobucket.com/albums/m289/NiteMareOfU13/wallpaper7fy.jpg');*/
-	}
-	.headerpublic{
-		margin-top: -10px;
-		font-family: monospace;
-	}
-	#myblogs{
-		font-family: monospace;
-		margin-top: 100px;
-	}
-	#loginheader{
-		font-family: monospace;
-	}
-	#headerbodypublic{
-		font-size: 32px;
-		margin-left: 470px;
-		color:#FFFFFF;
-	}
-	#backtoprofile3{
-		float:right;
-		font-size: 14px;
-		margin-top: 1.5px;
-		color: #FFFFFF;
+.task-col {
+	width:70%;
+	margin-left: 210px;
+	height: 380px;
+}
+.panel-title {
+	font-size: 1.5em;
+}
+#timedate{
+	font-size: 10px;
+	margin-top: -20px;
+}
+#blogbody{
+	/*background-color: rgba(255, 255, 102,.5);*/
+	height: 230px;
+	width: 700px;
+	/*background-image: url('http://i107.photobucket.com/albums/m289/NiteMareOfU13/wallpaper7fy.jpg');*/
+}
+.headerpublic{
+	margin-top: -10px;
+	font-family: monospace;
+}
+#myblogs{
+	font-family: monospace;
+	margin-top: 100px;
+}
+#loginheader{
+	font-family: monospace;
+}
+#headerbodypublic{
+	font-size: 32px;
+	margin-left: 470px;
+	color:#FFFFFF;
+}
+#backtoprofile3{
+	float:right;
+	font-size: 14px;
+	margin-top: 1.5px;
+	color: #FFFFFF;
 
-	}
-	#remove{
-		cursor: pointer;
-	}
-	#author{
-		font-size: 10px;
-		margin-top: -20px;
-	}
-	#footer{
-		background-color: #E6E6E6;
-	}
-	.chat {
-		width: 400px;
-	}
+}
+#remove{
+	cursor: pointer;
+}
+#author{
+	font-size: 10px;
+	margin-top: -20px;
+}
+#footer{
+	background-color: #E6E6E6;
+}
+.chat {
+	width: 400px;
+}
 
-	.bubble{
-		background-color: #F2F2F2;
-		border-radius: 5px;
-		box-shadow: 0 0 6px #B2B2B2;
-		display: inline-block;
-		padding: 10px 18px;
-		position: relative;
-		vertical-align: top;
-	}
+.bubble{
+	background-color: #F2F2F2;
+	border-radius: 5px;
+	box-shadow: 0 0 6px #B2B2B2;
+	display: inline-block;
+	padding: 10px 18px;
+	position: relative;
+	vertical-align: top;
+}
 
-	.bubble::before {
-		background-color: #F2F2F2;
-		content: "\00a0";
-		display: block;
-		height: 16px;
-		position: absolute;
-		top: 11px;
-		transform:             rotate( 29deg ) skew( -35deg );
-		-moz-transform:    rotate( 29deg ) skew( -35deg );
-		-ms-transform:     rotate( 29deg ) skew( -35deg );
-		-o-transform:      rotate( 29deg ) skew( -35deg );
-		-webkit-transform: rotate( 29deg ) skew( -35deg );
-		width:  20px;
-	}
+.bubble::before {
+	background-color: #F2F2F2;
+	content: "\00a0";
+	display: block;
+	height: 16px;
+	position: absolute;
+	top: 11px;
+	transform:             rotate( 29deg ) skew( -35deg );
+	-moz-transform:    rotate( 29deg ) skew( -35deg );
+	-ms-transform:     rotate( 29deg ) skew( -35deg );
+	-o-transform:      rotate( 29deg ) skew( -35deg );
+	-webkit-transform: rotate( 29deg ) skew( -35deg );
+	width:  20px;
+}
 
-	.me {
-		float: left;   
-		margin: 5px 45px 5px 20px;         
-	}
+.me {
+	float: left;   
+	margin: 5px 45px 5px 20px;         
+}
 
-	.me::before {
-		box-shadow: -2px 2px 2px 0 rgba( 178, 178, 178, .4 );
-		left: -9px;           
-	}
+.me::before {
+	box-shadow: -2px 2px 2px 0 rgba( 178, 178, 178, .4 );
+	left: -9px;           
+}
 
-	.you {
-		float: right;    
-		margin: 5px 20px 5px 45px;         
-	}
+.you {
+	float: right;    
+	margin: 5px 20px 5px 45px;         
+}
 
-	.you::before {
-		box-shadow: 2px -2px 2px 0 rgba( 178, 178, 178, .4 );
-		right: -9px;    
-	}
-	#textbubble1{
-		margin-top: -520px;
-		margin-left: 800px;
-		width: 310px;
-		height: 100px;
-	}
-	#textbubble2{
-		margin-top: -530px;
-		margin-right: 70px;
-	}
-	#textbubble3{
-		margin-top: -260px;
-		margin-left: 800px;
-		width: 300px;
-		height: 100px;	
-	}
+.you::before {
+	box-shadow: 2px -2px 2px 0 rgba( 178, 178, 178, .4 );
+	right: -9px;    
+}
+#textbubble1{
+	margin-top: -520px;
+	margin-left: 800px;
+	width: 310px;
+	height: 100px;
+}
+#textbubble2{
+	margin-top: -530px;
+	margin-right: 70px;
+}
+#textbubble3{
+	margin-top: -260px;
+	margin-left: 800px;
+	width: 300px;
+	height: 100px;	
+}
 
-	#textbubble4{
-		margin-top: -390px;
-		margin-left: 800px;
-		width: 300px;
-		height: 100px;
-	}
-	#social{
-		font-family: monospace;
-		background-color: yellow;
-	}
-	#writertools{
-		font-family: monospace;
-		background-color: yellow;
-	}
-	#trendingnow{
-		font-family: monospace;
-		background-color: yellow;
-	}
-	#backtopublic{
-		float: right;
-	}
-	#commentbox{
-		height: 200px;
-	}
-	#commentauthor{
-		font-size: 10px;
-	}
-	#newblogpublic{
-		color:#FFFFFF;
-	}
-	#report{
-		color:#FFFFFF;
-	}
-	#myaccountbox{
-		height: 500px;
-		width: 440px;
-		border: solid 1px;
-		margin-top: 50px;
-	}
-	#headeraccounthelp{
-		text-align: center;
-		font-family: monospace;
-	}
-	#myreportingbox{
-		height: 500px;
-		width: 440px;
-		border: solid 1px;
-		margin-top: 50px;
-	}
-	#headerreportinghelp{
-		text-align: center;
-		font-family: monospace;
-	}
-	#helpimage{
-		margin: auto;
-		margin-left: 140px;
-	}
-	#topic{
-		margin-left: 440px;
-		margin-top: -1000px;
-		font-family: sans-serif;
-		color:#FFFFFF;
-		border: solid 1px;
-		background-color: rgba(0,0,0,.6);
-	}
-	#submitedit{
-		border-radius: 40px;
-		width: 50%;
-		margin-left: 150px;
-	}
-	#backgroundcolorprofile{
-		background-image: url('http://c.shld.net/rpx/i/s/i/spin/10053567/prod_1406879712');
-		background-position-x:50%;
-		background-position-y:50%;
-		background-size: cover;
-/*		position: fixed;
-*/		width: 100%;
-height: 100%;
+#textbubble4{
+	margin-top: -390px;
+	margin-left: 800px;
+	width: 300px;
+	height: 100px;
+}
+#social{
+	font-family: monospace;
+	background-color: yellow;
+}
+#writertools{
+	font-family: monospace;
+	background-color: yellow;
+}
+#trendingnow{
+	font-family: monospace;
+	background-color: yellow;
+}
+#backtopublic{
+	float: right;
+}
+#commentbox{
+	height: 200px;
+}
+#commentauthor{
+	font-size: 10px;
+}
+#newblogpublic{
+	color:#FFFFFF;
+}
+#report{
+	color:#FFFFFF;
+}
+#myaccountbox{
+	height: 500px;
+	width: 440px;
+	border: solid 1px;
+	margin-top: 50px;
+}
+#headeraccounthelp{
+	text-align: center;
+	font-family: monospace;
+}
+#myreportingbox{
+	height: 500px;
+	width: 440px;
+	border: solid 1px;
+	margin-top: 50px;
+}
+#headerreportinghelp{
+	text-align: center;
+	font-family: monospace;
+}
+#helpimage{
+	margin: auto;
+	margin-left: 140px;
+}
+#topic{
+	margin-left: 440px;
+	margin-top: -1000px;
+	font-family: sans-serif;
+	color:#FFFFFF;
+	border: solid 1px;
+	background-color: rgba(0,0,0,.6);
+}
+#submitedit{
+	border-radius: 40px;
+	width: 50%;
+	margin-left: 150px;
+}
+#backgroundcolorprofile{
+	background-image: url('http://c.shld.net/rpx/i/s/i/spin/10053567/prod_1406879712');
+	background-size: cover;
+	min-height: 100vh;
 
 }
 #backgroundcolorpublic{
 	background-image: url('http://bgfons.com/upload/newspaper_texture2847.jpg');
+	background-size: cover;
+	min-height: 100vh;
+
 }
 #backgroundcolorhelp{
 	background-color: #248FB2;
@@ -340,4 +327,7 @@ height: 100%;
 }
 #backgroundcoloraddcomment{
 	background-color: #E6E6E6;
+	background-size: cover;
+	min-height: 100vh;
+
 }
