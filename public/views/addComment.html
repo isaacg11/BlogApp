@@ -1,9 +1,9 @@
 <div ng-controller="CommentDetailController as vm">
 	<div id="backgroundcoloraddcomment">
 		<a id="backtopublic" ui-sref="Home">Back ></a>
-		<div class="container well">
+		<div id="commentpageheaderbox" class="container well">
 			<div class="hcenter">
-				<h4>Add Comment!</h4>
+				<h2 id="addcommentheader">Add Comment about this blog!</h2>
 				<br>
 			</div>
 		</div>
@@ -19,7 +19,7 @@
 		<!--.................................................................OUTPUT.......................................................-->
 
 		<div ng-repeat="c in vm.blog.comments | orderBy: '-dateCreated' ">
-			<div class="well container">
+			<div id="commentoutputbox" class="well container">
 				<p id="commentoutput"><i>"{{c.body}}"</i></p>
 				<br>
 				<span id="commentauthor"><i></i> {{c.dateCreated | date: "short"}}</span>
